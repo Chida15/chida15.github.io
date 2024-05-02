@@ -148,18 +148,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -184,6 +184,885 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/05/02/MacOs%E5%A6%82%E4%BD%95%E5%B0%86md%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E8%BD%AC%E4%B8%BApdf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yevette">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/02/MacOs%E5%A6%82%E4%BD%95%E5%B0%86md%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E8%BD%AC%E4%B8%BApdf/" class="post-title-link" itemprop="url">MacOs如何将md文件批量转为pdf</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-02 10:16:24 / 修改时间：10:21:50" itemprop="dateCreated datePublished" datetime="2024-05-02T10:16:24+08:00">2024-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Solutions/" itemprop="url" rel="index"><span itemprop="name">Solutions</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>523</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a>安装brew</h1><p>&#x2F;bin&#x2F;bash -c “$(curl -fsSL <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)”</p>
+<p>如果出现网络问题：修改~&#x2F;.zshrc中的代理和镜像源<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/</a></p>
+<h1 id="安装pandoc"><a href="#安装pandoc" class="headerlink" title="安装pandoc"></a>安装pandoc</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install pandoc</span><br></pre></td></tr></table></figure>
+
+<h1 id="批量转换"><a href="#批量转换" class="headerlink" title="批量转换"></a>批量转换</h1><p>递归查找&#x2F;path&#x2F;to&#x2F;parent&#x2F;directory”下的md文件，将其全部转为pdf，然后保存到&#x2F;path&#x2F;to&#x2F;output&#x2F;directory中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /path/to/parent/directory -type f -name &quot;*.md&quot; -exec sh -c &#x27;pandoc &quot;$1&quot; -o &quot;/path/to/output/directory/$(basename &quot;$1&quot; .md).pdf&quot;&#x27; _ &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/02/MacOs%E5%A6%82%E4%BD%95%E5%B0%86md%E6%96%87%E4%BB%B6%E6%89%B9%E9%87%8F%E8%BD%AC%E4%B8%BApdf/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/05/01/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yevette">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/01/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day15/" class="post-title-link" itemprop="url">韩顺平java视频学习day15</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-01 10:41:18" itemprop="dateCreated datePublished" datetime="2024-05-01T10:41:18+08:00">2024-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-02 09:48:22" itemprop="dateModified" datetime="2024-05-02T09:48:22+08:00">2024-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="房屋出租系统"><a href="#房屋出租系统" class="headerlink" title="房屋出租系统"></a>房屋出租系统</h1><h2 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h2><p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day15/image-20240501164239549.png" alt="image-20240501164239549"></p>
+<p>&#x3D;&#x3D;注意&#x3D;&#x3D;：分析是从上往下，实现是从下往上</p>
+<p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day15/image-20240501112000995.png" alt="image-20240501112000995"></p>
+<h2 id="系统实现"><a href="#系统实现" class="headerlink" title="系统实现"></a>系统实现</h2><h3 id="工具类Utility"><a href="#工具类Utility" class="headerlink" title="工具类Utility"></a>工具类Utility</h3><p>先准备工具类，提高开发效率。在实际开发中，公司都会提供相应的工具类和开发库。可以直接使用韩老师给的Utility.java</p>
+<p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day15/image-20240501112624466.png" alt="image-20240501112624466"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yevette.houserent.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 这是一个测试类</span></span><br><span class="line">        <span class="comment">// 静态方法可以通过类名直接调用</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">A</span>().hi();</span><br><span class="line">        A.cry();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  要求输入一个字符串，长度最大为3</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> Utility.readString(<span class="number">3</span>);</span><br><span class="line">        System.out.println(s);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> Utility.readString(<span class="number">10</span>, <span class="string">&quot;yevette&quot;</span>);</span><br><span class="line">        System.out.println(s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hi</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">cry</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/01/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day15/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/30/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yevette">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/30/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/" class="post-title-link" itemprop="url">韩顺平java视频学习day14</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-04-30 16:49:13 / 修改时间：17:18:39" itemprop="dateCreated datePublished" datetime="2024-04-30T16:49:13+08:00">2024-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="房屋出租系统"><a href="#房屋出租系统" class="headerlink" title="房屋出租系统"></a>房屋出租系统</h1><p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/image-20240429214221340.png" alt="image-20240429214221340"></p>
+<p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/image-20240429214240640.png" alt="image-20240429214240640"></p>
+<p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/image-20240429214259853.png" alt="image-20240429214259853"></p>
+<p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/image-20240429214328311.png" alt="image-20240429214328311"></p>
+<p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/image-20240429214355513.png" alt="image-20240429214355513"></p>
+<p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/image-20240429214448275.png" alt="image-20240429214448275"></p>
+<p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/image-20240429214503602.png" alt="image-20240429214503602"></p>
+
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/30/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day14/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/29/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yevette">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/29/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day13/" class="post-title-link" itemprop="url">韩顺平java视频学习day13</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-29 10:52:52" itemprop="dateCreated datePublished" datetime="2024-04-29T10:52:52+08:00">2024-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-30 16:49:54" itemprop="dateModified" datetime="2024-04-30T16:49:54+08:00">2024-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>307</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="面向对象编程（中级）"><a href="#面向对象编程（中级）" class="headerlink" title="面向对象编程（中级）"></a>面向对象编程（中级）</h1><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><h3 id="第6题"><a href="#第6题" class="headerlink" title="第6题"></a>第6题</h3><p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day13/image-20240429105415469.png" alt="image-20240429105415469"></p>
+<h3 id="第15题"><a href="#第15题" class="headerlink" title="第15题"></a>第15题</h3><p>什么是多态，多态具体体现有哪些？</p>
+<p>（1）多态是指方法或对象具有多种形态，是OOP的第三大特征，是建立在封装和继承基础之上的</p>
+<p>（2）多态具体体现：</p>
+<p>1.方法多态：方法重载和方法重写</p>
+<p>2.对象多态：对象的编译类型和运行类型可以不一致；编译类型在定义时就确定不能变化，而对象的运行类型可以变化，可以通过getClass()查看；编译类型看定义时等号左边，运行类型看等号右边</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/29/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day13/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/28/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yevette">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/28/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day12/" class="post-title-link" itemprop="url">韩顺平java视频学习day12</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-04-28 14:24:03 / 修改时间：21:18:14" itemprop="dateCreated datePublished" datetime="2024-04-28T14:24:03+08:00">2024-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="面向对象编程（中级）"><a href="#面向对象编程（中级）" class="headerlink" title="面向对象编程（中级）"></a>面向对象编程（中级）</h1><h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><h3 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h3><h4 id="equals和-的对比"><a href="#equals和-的对比" class="headerlink" title="equals和&#x3D;&#x3D;的对比"></a>equals和&#x3D;&#x3D;的对比</h4><p>（1）&#x3D;&#x3D;是一个比较运算符，既可以判断基本类型又可以判断引用类型。判断基本类型判断的是值是否相等（char比较的是数字），判断引用类型判断的是地址是否相等（即是否为同一对象）</p>
+<p>（2）eqauls是Object类中的方法，只能判断引用类型。默认判断地址是否相等，子类中往往重写该方法用于判断内容是否相等，比如Integer、String</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yevette.object;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EqualsExercise01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">person1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;yevette&quot;</span>, <span class="number">25</span>, <span class="string">&#x27;女&#x27;</span>);</span><br><span class="line">        <span class="type">Person</span> <span class="variable">person2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;yevette&quot;</span>, <span class="number">25</span>, <span class="string">&#x27;女&#x27;</span>);</span><br><span class="line">        System.out.println(person1.equals(person2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">char</span> gender;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age, <span class="type">char</span> gender)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">        <span class="built_in">this</span>.gender = gender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断两个Person对象的各个属性值是否相同</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span> == obj) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 地址相同，即为同一个对象，各属性值一定相同</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Person) &#123;</span><br><span class="line">            <span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> (Person) obj;</span><br><span class="line">            <span class="keyword">return</span> name.equals(p.name) &amp;&amp; age == p.age &amp;&amp; gender == p.gender;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="hashcode方法"><a href="#hashcode方法" class="headerlink" title="hashcode方法"></a>hashcode方法</h3><p>返回该对象的哈希码值</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/28/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day12/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/27/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yevette">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/27/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day11/" class="post-title-link" itemprop="url">韩顺平java视频学习day10</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-27 15:24:07" itemprop="dateCreated datePublished" datetime="2024-04-27T15:24:07+08:00">2024-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-29 11:02:28" itemprop="dateModified" datetime="2024-04-29T11:02:28+08:00">2024-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Intership/" itemprop="url" rel="index"><span itemprop="name">Intership</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="面向对象编程（中级）"><a href="#面向对象编程（中级）" class="headerlink" title="面向对象编程（中级）"></a>面向对象编程（中级）</h1><h2 id="多态（polymorphism）"><a href="#多态（polymorphism）" class="headerlink" title="多态（polymorphism）"></a>多态（polymorphism）</h2><h3 id="注意事项和细节"><a href="#注意事项和细节" class="headerlink" title="注意事项和细节"></a>注意事项和细节</h3><h4 id="多态的前提"><a href="#多态的前提" class="headerlink" title="多态的前提"></a>多态的前提</h4><p>多态的前提是两个对象（类）存在继承关系</p>
+<h4 id="多态的向上转型："><a href="#多态的向上转型：" class="headerlink" title="多态的向上转型："></a>多态的向上转型：</h4><p>（1）本质是父类的引用指向子类的对象</p>
+<p>（2）语法：父类类型 引用名 &#x3D; new 子类类型();</p>
+<p>（3）只能调用父类的所有成员（遵守访问权限），不能调用子类中的特有成员（只有子类有），最终运行效果看子类具体实现（重写方法就调用子类的）</p>
+<p>&#x3D;&#x3D;注意&#x3D;&#x3D;：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/27/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day11/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/25/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yevette">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/25/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day9/" class="post-title-link" itemprop="url">韩顺平java视频学习day9</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-25 08:46:04" itemprop="dateCreated datePublished" datetime="2024-04-25T08:46:04+08:00">2024-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-02 17:05:00" itemprop="dateModified" datetime="2024-05-02T17:05:00+08:00">2024-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="面向对象编程（中级）"><a href="#面向对象编程（中级）" class="headerlink" title="面向对象编程（中级）"></a>面向对象编程（中级）</h1><h2 id="继承（extends）"><a href="#继承（extends）" class="headerlink" title="继承（extends）"></a>继承（extends）</h2><h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><p>Student.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yevette.extend.improve_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 是Pupil和Graduate的父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getScore</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setScore</span><span class="params">(<span class="type">double</span> score)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showInfo</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;学生名&quot;</span> + name + <span class="string">&quot; 年龄&quot;</span> + age</span><br><span class="line">                + <span class="string">&quot; 成绩&quot;</span> + score);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Pupil.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yevette.extend.improve_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Pupil</span> <span class="keyword">extends</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testing</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;小学生&quot;</span> + name + <span class="string">&quot;正在考小学数学...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Graduate.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yevette.extend.improve_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Graduate</span> <span class="keyword">extends</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testing</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;大学生&quot;</span> + name + <span class="string">&quot;正在考高等数学...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>注</em>：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/25/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/24/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yevette">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Yevette's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/24/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day8/" class="post-title-link" itemprop="url">韩顺平java视频学习day8</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-24 09:34:14" itemprop="dateCreated datePublished" datetime="2024-04-24T09:34:14+08:00">2024-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-02 16:36:07" itemprop="dateModified" datetime="2024-05-02T16:36:07+08:00">2024-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="面向对象编程（基础）"><a href="#面向对象编程（基础）" class="headerlink" title="面向对象编程（基础）"></a>面向对象编程（基础）</h1><h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p><em>注</em>：</p>
+<p>（1）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">	<span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">9</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">count1</span><span class="params">()</span> &#123;</span><br><span class="line">		count = <span class="number">10</span>;</span><br><span class="line">		System.out.println(count);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">count2</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(count++);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="comment">// new Test()是匿名对象，没有引用，在堆里只能用一次</span></span><br><span class="line">		<span class="keyword">new</span> <span class="title class_">Test</span>().count1();</span><br><span class="line">		<span class="type">Test</span> <span class="variable">t1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Test</span>();</span><br><span class="line">		t1.count2();		</span><br><span class="line">		t1.count2();		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）随机数生成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Random</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line"><span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> r.nextInt(<span class="number">3</span>); <span class="comment">// 返回0-2的随机数</span></span><br><span class="line"></span><br><span class="line"><span class="type">double</span> <span class="variable">num1</span> <span class="operator">=</span> r.nextDouble();</span><br><span class="line"><span class="type">double</span> <span class="variable">num2</span> <span class="operator">=</span> Math.random();</span><br><span class="line"><span class="comment">// Math.random()和r.nextDouble()都返回[0,1)的随机double类型数，但是前者是静态方法可以直接使用，后者需要先创建Random对象，才可以调用方法</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="面向对象编程（中级）"><a href="#面向对象编程（中级）" class="headerlink" title="面向对象编程（中级）"></a>面向对象编程（中级）</h1><h2 id="IDEA的使用"><a href="#IDEA的使用" class="headerlink" title="IDEA的使用"></a>IDEA的使用</h2><h3 id="常用快捷键（settings-keymap）"><a href="#常用快捷键（settings-keymap）" class="headerlink" title="常用快捷键（settings-keymap）"></a>常用快捷键（settings-keymap）</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/24/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -221,9 +1100,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-04-23 08:42:02 / 修改时间：20:27:50" itemprop="dateCreated datePublished" datetime="2024-04-23T08:42:02+08:00">2024-04-23</time>
+      <time title="创建时间：2024-04-23 08:42:02" itemprop="dateCreated datePublished" datetime="2024-04-23T08:42:02+08:00">2024-04-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-02 15:48:07" itemprop="dateModified" datetime="2024-05-02T15:48:07+08:00">2024-05-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -241,14 +1126,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.4k</span>
+      <span>5.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -259,11 +1144,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="面向对象编程（基础）"><a href="#面向对象编程（基础）" class="headerlink" title="面向对象编程（基础）"></a>面向对象编程（基础）</h1><h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><h3 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h3><h4 id="方法传参机制"><a href="#方法传参机制" class="headerlink" title="方法传参机制"></a>方法传参机制</h4><p>（1）基本数据类型，传递的是值（值拷贝），形参的任何改变不影响实参</p>
+          <h1 id="面向对象编程（基础）"><a href="#面向对象编程（基础）" class="headerlink" title="面向对象编程（基础）"></a>面向对象编程（基础）</h1><h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><h3 id="方法传参机制"><a href="#方法传参机制" class="headerlink" title="方法传参机制"></a>方法传参机制</h3><p>（1）基本数据类型，传递的是值（值拷贝），形参的任何改变不影响实参</p>
 <p>（2）引用类型传递的是地址（地址也是值的一种），形参可以影响实参</p>
-<h3 id="递归调用"><a href="#递归调用" class="headerlink" title="递归调用"></a>递归调用</h3><p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day7/image-20240423094003782.png" alt="image-20240423094003782"></p>
+<h2 id="递归调用"><a href="#递归调用" class="headerlink" title="递归调用"></a>递归调用</h2><p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day7/image-20240423094003782.png" alt="image-20240423094003782"></p>
 <p>（1）猴子吃桃子：一堆桃子，猴子第一天吃其中一半并多吃了一个，以后每天都吃其中一半然后多吃一个，到第十天想吃时只剩下一个桃子。问最初共多少个桃子？</p>
 <p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day7/image-20240423102846749.png" alt="image-20240423102846749"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyTools</span> &#123;</span><br><span class="line">  <span class="comment">// 固定从第一天开始，但是可以改变最后一天</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">func</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> func(n - <span class="number">1</span>) * <span class="number">2</span> + <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">  <span class="comment">// 固定最后一天为第是天，从1-10天开始。假设从第9天开始这样吃，吃到第10天只剩1个，可以求出第9天有4个</span></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">func1</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (n == <span class="number">10</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n &gt;= <span class="number">1</span> &amp;&amp; n &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> func1(n + <span class="number">1</span>) * <span class="number">2</span> + <span class="number">2</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/04/23/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day7/#more" rel="contents">
@@ -333,7 +1219,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-23 08:53:24" itemprop="dateModified" datetime="2024-04-23T08:53:24+08:00">2024-04-23</time>
+      <time title="修改时间：2024-05-02 11:56:38" itemprop="dateModified" datetime="2024-05-02T11:56:38+08:00">2024-05-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -369,12 +1255,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="面向对象编程（基础）"><a href="#面向对象编程（基础）" class="headerlink" title="面向对象编程（基础）"></a>面向对象编程（基础）</h1><h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><h3 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h3><h4 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">	String name;</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> x + y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="面向对象编程（基础）"><a href="#面向对象编程（基础）" class="headerlink" title="面向对象编程（基础）"></a>面向对象编程（基础）</h1><h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">	String name;</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> x + y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="方法调用机制"><a href="#方法调用机制" class="headerlink" title="方法调用机制"></a>方法调用机制</h4><p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day6/image-20240422095656528.png" alt="image-20240422095656528"></p>
-<p>&#x3D;&#x3D;注意&#x3D;&#x3D;：</p>
+<h3 id="方法调用机制"><a href="#方法调用机制" class="headerlink" title="方法调用机制"></a>方法调用机制</h3><p><img src="/../../../../source/images/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day6/image-20240422095656528.png" alt="image-20240422095656528"></p>
+<p><em>注</em>：</p>
 <p>（1）当程序执行到方法时，会开辟一个独立空间（栈空间）</p>
-<p>（2）栈（独立）：主要用于存储方法调用信息和局部变量。当线程进入一个Java方法时，就会在当前线程的栈里压入一个栈帧，用于保存当前线程的状态（参数、局部变量、中间计算过程和其他数据），当退出方法时，修改栈指针就可以把栈中的内容销毁（调用一个方法就会产生一个压入一个栈帧）</p>
+<p>（2）栈（独立）：主要用于存储方法调用信息和局部变量。当线程进入一个Java方法时，就会在当前线程的栈里压入一个栈帧，用于保存当前线程的状态（&#x3D;&#x3D;参数、局部变量、中间计算过程和其他数据&#x3D;&#x3D;），当退出方法时，修改栈指针就可以把栈中的内容销毁（调用一个方法就会产生一个压入一个栈帧）</p>
+<p>堆（共享）：主要用于存储&#x3D;&#x3D;对象实例和数组&#x3D;&#x3D;</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/04/22/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day6/#more" rel="contents">
@@ -400,896 +1287,9 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/21/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yevette">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/21/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day5/" class="post-title-link" itemprop="url">韩顺平java视频学习day5</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-21 10:04:32" itemprop="dateCreated datePublished" datetime="2024-04-21T10:04:32+08:00">2024-04-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-23 20:12:42" itemprop="dateModified" datetime="2024-04-23T20:12:42+08:00">2024-04-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="程序控制结构"><a href="#程序控制结构" class="headerlink" title="程序控制结构"></a>程序控制结构</h1><h2 id="跳转控制语句"><a href="#跳转控制语句" class="headerlink" title="跳转控制语句"></a>跳转控制语句</h2><p>break、continue、return</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>（1）String用equals方法进行比较</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;林黛玉&quot;</span>;</span><br><span class="line">System.out.println(<span class="string">&quot;林黛玉&quot;</span>.equals(name)); <span class="comment">// 具体的字符串写前面可以避免空指针异常</span></span><br></pre></td></tr></table></figure>
-
-<p>（2）随机数生成</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> (<span class="type">int</span>)(Math.random() * <span class="number">100</span>) + <span class="number">1</span>; <span class="comment">// 生成1-100的随机整数</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="数组、排序和查找"><a href="#数组、排序和查找" class="headerlink" title="数组、排序和查找"></a>数组、排序和查找</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/21/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/20/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yevette">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/20/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day4/" class="post-title-link" itemprop="url">韩顺平java视频学习day4</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-04-20 09:37:15 / 修改时间：22:35:59" itemprop="dateCreated datePublished" datetime="2024-04-20T09:37:15+08:00">2024-04-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><h3 id="和-的区别"><a href="#和-的区别" class="headerlink" title="&amp;&amp;和&amp;的区别"></a>&amp;&amp;和&amp;的区别</h3><p>（1）&amp;&amp;短路与：如果第一个条件为false，后面不会再判断</p>
-<p>（2）&amp;逻辑与：如果第一个条件为false，后面仍会判断</p>
-<p>&#x3D;&#x3D;注意&#x3D;&#x3D;：Java中不能用0或1表示false或true，这和C++中不一样</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="type">Scanner</span> <span class="variable">myScanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">		System.out.println(<span class="string">&quot;请输入年份：&quot;</span>);</span><br><span class="line">		<span class="type">int</span> <span class="variable">year</span> <span class="operator">=</span> myScanner.nextInt();</span><br><span class="line">    <span class="comment">// 如果是		if (year % 4 == 0 &amp;&amp; year % 100  || year % 400 == 0)则错误，因为year % 100答案为0或1是int型不是boolean型</span></span><br><span class="line">		<span class="keyword">if</span> (year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span> || year % <span class="number">400</span> == <span class="number">0</span>)&#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;是闰年！&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;是平年！&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">b += <span class="number">2</span>; <span class="comment">// 等价 b = (byte)(b + 2);</span></span><br><span class="line"><span class="comment">// b = b + 2则错误，因为int不能转为byte</span></span><br><span class="line">b++; <span class="comment">// 等价 b = (byte)(b + 1);</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="键盘输入"><a href="#键盘输入" class="headerlink" title="键盘输入"></a>键盘输入</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/20/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/19/%E9%9F%A9%E9%A1%BA%E5%B9%B3Java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yevette">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/19/%E9%9F%A9%E9%A1%BA%E5%B9%B3Java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day3/" class="post-title-link" itemprop="url">韩顺平Java视频学习day3</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-19 14:40:10" itemprop="dateCreated datePublished" datetime="2024-04-19T14:40:10+08:00">2024-04-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-21 11:14:01" itemprop="dateModified" datetime="2024-04-21T11:14:01+08:00">2024-04-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="字符码表"><a href="#字符码表" class="headerlink" title="字符码表"></a>字符码表</h2><p>（1）ASCII码：1个字节表示128个字符（ASCII码扩展能表示256个字符）</p>
-<p>（2）Unicode码：固定大小的编码，2个字节表示65536个字符，其中字母和汉字等统一占2个字节（Unicode码兼容ASCII码）</p>
-<p>（3）UTF-8：是互联网上使用最广的Unicode的实现方式，大小可变的编码，使用1-4个字节表示一个符号，字母使用1个字节，拉丁文使用2字节，汉字使用3个字节</p>
-<p>（4）GBK：可以表示汉字，且范围广，字母使用1个字节，汉字使用2个字节</p>
-<p>（5）BB2312：可以表示汉字，表示范围小于gbk</p>
-<p>（6）BIG5码：繁体中文</p>
-<p>&#x3D;&#x3D;注意&#x3D;&#x3D;：Java使用Unicode字符集，并设计<code>char</code>为固定的16位宽（即2个字节）。这使得每个<code>char</code>可以表示65536个不同的字符，足以覆盖大多数字符集，包括基本的多语种平面（BMP）中的字符。而c++中<code>char</code>占一个字节，只能表示256个字符，即只能表示ASCII码（扩展）</p>
-<h2 id="基本数据类型转换"><a href="#基本数据类型转换" class="headerlink" title="基本数据类型转换"></a>基本数据类型转换</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/19/%E9%9F%A9%E9%A1%BA%E5%B9%B3Java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/18/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yevette">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/18/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day2/" class="post-title-link" itemprop="url">韩顺平java视频学习day2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-18 20:10:45" itemprop="dateCreated datePublished" datetime="2024-04-18T20:10:45+08:00">2024-04-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-19 17:09:36" itemprop="dateModified" datetime="2024-04-19T17:09:36+08:00">2024-04-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="加号的使用"><a href="#加号的使用" class="headerlink" title="加号的使用"></a>加号的使用</h2><p>（1）“+”左右两边都是数值型进行加法运算，如果有一边为字符串时则做拼接运算</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;a&quot;</span> + <span class="number">10</span>);<span class="comment">// 结果是a10</span></span><br><span class="line">System.out.println(<span class="string">&#x27;a&#x27;</span> + <span class="number">10</span>);<span class="comment">// 结果是97+10=107，&#x27;a&#x27;转为int计算，结果为int</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p> （1）数据类型分为基本数据类型和引用数据类型（类class、接口interface和数组[]）</p>
-<p>（2）Java的整数类型有固定的范围和字段长度，不受具体os的影响以保证Java程序的可移植性。而C++的整数类型大小取决于编译器实现和运行的操作系统</p>
-<p>（3）Java的整型常量默认为int型，声明long型常量须后加’ L’，浮点型常量默认为double型，声明float型常量须后加’f’或’F’</p>
-<p> （4）注意下面的问题：8.1不能精准的用二进制表示（整数都可以精准表示，小数不行）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">double</span> <span class="variable">num1</span> <span class="operator">=</span> <span class="number">2.7</span>;</span><br><span class="line">		<span class="type">double</span> <span class="variable">num2</span> <span class="operator">=</span> <span class="number">8.1</span> / <span class="number">3</span>;	<span class="comment">// 等于2.69999999...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/18/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/17/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yevette">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/17/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Java开发手册学习</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-17 20:19:47" itemprop="dateCreated datePublished" datetime="2024-04-17T20:19:47+08:00">2024-04-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-20 20:01:06" itemprop="dateModified" datetime="2024-04-20T20:01:06+08:00">2024-04-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="编程规约"><a href="#编程规约" class="headerlink" title="编程规约"></a>编程规约</h1><h2 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h2><p>（1）包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，类名如果有复数含义可以使用复数形式：应用工具类包名com.alibaba.ai.util、类名为MessageUtils</p>
-<p>（2）类名、接口名使用大驼峰命名法：MarcoPolo、UserDO</p>
-<p>（3）方法名、参数名、变量名统一使用小驼峰法：localValue、getHttpMessage()、inputUserId</p>
-<p>（4）常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长：MAX_STOCK_COUNT</p>
-<p>（5）抽象类命名使用Abstract或Base开头；异常类命名使用Exception结尾；测试类命名以它要测试的类名开始，以Test结尾</p>
-<p>（6）接口类中的方法和属性不要加任何修饰符号（public也不要加），保持代码简洁性，并加上有效的Javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量肯定是与接口方法相关，并且是整个应用的基础常量：接口方法名void commit();接口基础常量String COMPANY &#x3D; “alibaba”;</p>
-<p>（7）类型域中括号紧挨相连表示数组：int[] arrayDemo;</p>
-<h2 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/17/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/17/Sublime%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yevette">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/17/Sublime%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">Sublime的一些小技巧</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-17 17:28:18" itemprop="dateCreated datePublished" datetime="2024-04-17T17:28:18+08:00">2024-04-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-18 21:55:54" itemprop="dateModified" datetime="2024-04-18T21:55:54+08:00">2024-04-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Triks/" itemprop="url" rel="index"><span itemprop="name">Triks</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>57</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><p>（1）cmd+&#x2F;：快速注释</p>
-<p>（2）cmd+shift+d：复制光标所在行</p>
-<p>（3）cmd+x：删除当前行</p>
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/17/Sublime%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/17/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yevette">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/17/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day1/" class="post-title-link" itemprop="url">韩顺平java视频学习day1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-04-17 10:00:05 / 修改时间：20:19:11" itemprop="dateCreated datePublished" datetime="2024-04-17T10:00:05+08:00">2024-04-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Internship/" itemprop="url" rel="index"><span itemprop="name">Internship</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Java重点知识"><a href="#Java重点知识" class="headerlink" title="Java重点知识"></a>Java重点知识</h1><h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><p>Java概述：Java的运行机制、JDK、Java开发规范</p>
-<p>变量：数据类型</p>
-<p>运算符：二进制</p>
-<p>控制结构：循环</p>
-<p>数组、排序和查找：数组</p>
-<p>面向对象编程（基础）：成员方法及其传参机制、构造器</p>
-<p>面向对象编程（中级）：封装、继承、多态</p>
-<h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/17/%E9%9F%A9%E9%A1%BA%E5%B9%B3java%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0day1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chida15.github.io/2024/04/16/%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD%E5%B9%B6%E9%87%8D%E8%A3%85hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yevette">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Yevette's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/16/%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD%E5%B9%B6%E9%87%8D%E8%A3%85hexo/" class="post-title-link" itemprop="url">如何卸载并重装hexo</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-16 20:08:03" itemprop="dateCreated datePublished" datetime="2024-04-16T20:08:03+08:00">2024-04-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-17 09:18:00" itemprop="dateModified" datetime="2024-04-17T09:18:00+08:00">2024-04-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Solutions/" itemprop="url" rel="index"><span itemprop="name">Solutions</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="重装npm和node-js"><a href="#重装npm和node-js" class="headerlink" title="重装npm和node.js"></a>重装npm和node.js</h2><h3 id="卸载nmp"><a href="#卸载nmp" class="headerlink" title="卸载nmp"></a>卸载nmp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm uninstall npm -g</span><br></pre></td></tr></table></figure>
-
-<p>如果不能卸载</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/lib/node_modules</span><br></pre></td></tr></table></figure>
-
-<p>然后删除npm文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmp -v</span><br></pre></td></tr></table></figure>
-
-<p>测试一下，如果not found则卸载成功</p>
-<h3 id="卸载node-js"><a href="#卸载node-js" class="headerlink" title="卸载node.js"></a>卸载node.js</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*</span><br><span class="line"></span><br><span class="line">sudo rm -rf /usr/local/include/node /Users/$USER/.npm</span><br><span class="line"></span><br><span class="line">sudo rm /usr/local/bin/node</span><br><span class="line"></span><br><span class="line">sudo rm /usr/local/share/man/man1/node.1</span><br><span class="line"></span><br><span class="line">sudo rm /usr/local/lib/dtrace/node.d</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/04/16/%E5%A6%82%E4%BD%95%E5%8D%B8%E8%BD%BD%E5%B9%B6%E9%87%8D%E8%A3%85hexo/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
 </div>
   </main>
@@ -1310,13 +1310,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">24k</span>
+    <span title="站点总字数">49k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">22 分钟</span>
+    <span title="站点阅读时长">45 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
